@@ -1,0 +1,37 @@
+{
+  "name": "angular2-draggable",
+  "version": "2.1.4",
+  "author": "Xie, Ziyu",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "ng",
+    "drag",
+    "resize",
+    "draggable",
+    "resizable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xieziyu/angular2-draggable.git"
+  },
+  "homepage": "https://xieziyu.github.io/angular2-draggable",
+  "bugs": "https://github.com/xieziyu/angular2-draggable/issues",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || >=6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || >=6.0.0"
+  },
+  "main": "bundles/angular2-draggable.umd.js",
+  "module": "fesm5/angular2-draggable.js",
+  "es2015": "fesm2015/angular2-draggable.js",
+  "esm5": "esm5/angular2-draggable.js",
+  "esm2015": "esm2015/angular2-draggable.js",
+  "fesm5": "fesm5/angular2-draggable.js",
+  "fesm2015": "fesm2015/angular2-draggable.js",
+  "typings": "angular2-draggable.d.ts",
+  "metadata": "angular2-draggable.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
