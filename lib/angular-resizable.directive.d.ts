@@ -1,10 +1,11 @@
-import { ElementRef, Renderer2, OnInit, EventEmitter, OnChanges, SimpleChanges, OnDestroy, AfterViewInit } from '@angular/core';
+import { ElementRef, Renderer2, OnInit, EventEmitter, OnChanges, SimpleChanges, OnDestroy, AfterViewInit, NgZone } from '@angular/core';
 import { ResizeHandle } from './widgets/resize-handle';
 import { ResizeHandleType } from './models/resize-handle-type';
 import { IResizeEvent } from './models/resize-event';
 export declare class AngularResizableDirective implements OnInit, OnChanges, OnDestroy, AfterViewInit {
     private el;
     private renderer;
+    private zone;
     private _resizable;
     private _handles;
     private _handleType;
@@ -30,6 +31,9 @@ export declare class AngularResizableDirective implements OnInit, OnChanges, OnD
      * https://github.com/xieziyu/angular2-draggable/issues/84
      */
     private _helperBlock;
+    private _removeListener1;
+    private _removeListener2;
+    private _removeListener3;
     /** Disables the resizable if set to false. */
     ngResizable: any;
     /**
@@ -77,7 +81,7 @@ export declare class AngularResizableDirective implements OnInit, OnChanges, OnD
     rzStop: EventEmitter<IResizeEvent>;
     /** Input css scale transform of element so translations are correct */
     scale: number;
-    constructor(el: ElementRef<HTMLElement>, renderer: Renderer2);
+    constructor(el: ElementRef<HTMLElement>, renderer: Renderer2, zone: NgZone);
     ngOnChanges(changes: SimpleChanges): void;
     ngOnInit(): void;
     ngOnDestroy(): void;
@@ -106,8 +110,7 @@ export declare class AngularResizableDirective implements OnInit, OnChanges, OnD
     private createHandleByType(type, css);
     private removeHandles();
     onMouseDown(event: MouseEvent | TouchEvent, handle: ResizeHandle): void;
-    onMouseLeave(): void;
-    onMouseMove(event: MouseEvent | TouchEvent): void;
+    private _bindEvents();
     private startResize(handle);
     private stopResize();
     private onResizing();

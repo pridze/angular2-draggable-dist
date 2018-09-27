@@ -1,8 +1,9 @@
-import { ElementRef, Renderer2, OnInit, EventEmitter, OnChanges, SimpleChanges, OnDestroy, AfterViewInit } from '@angular/core';
+import { ElementRef, Renderer2, OnInit, EventEmitter, OnChanges, SimpleChanges, OnDestroy, AfterViewInit, NgZone } from '@angular/core';
 import { IPosition } from './models/position';
 export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnChanges, AfterViewInit {
     private el;
     private renderer;
+    private zone;
     private allowDrag;
     private moving;
     private orignal;
@@ -11,6 +12,10 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
     private oldZIndex;
     private _zIndex;
     private needTransform;
+    private _removeListener1;
+    private _removeListener2;
+    private _removeListener3;
+    private _removeListener4;
     /**
      * Bugfix: iFrames, and context unrelated elements block all events, and are unusable
      * https://github.com/xieziyu/angular2-draggable/issues/84
@@ -51,7 +56,7 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
     /** Emit position offsets when put back */
     endOffset: EventEmitter<IPosition>;
     ngDraggable: any;
-    constructor(el: ElementRef, renderer: Renderer2);
+    constructor(el: ElementRef, renderer: Renderer2, zone: NgZone);
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;
@@ -68,7 +73,5 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
     };
     private putBack();
     checkHandleTarget(target: EventTarget, element: Element): boolean;
-    onMouseDown(event: MouseEvent | TouchEvent): void;
-    onMouseLeave(): void;
-    onMouseMove(event: MouseEvent | TouchEvent): void;
+    private _bindEvents();
 }
