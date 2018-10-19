@@ -9,6 +9,7 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
     private orignal;
     private oldTrans;
     private tempTrans;
+    private currTrans;
     private oldZIndex;
     private _zIndex;
     private needTransform;
@@ -16,6 +17,7 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
     private _removeListener2;
     private _removeListener3;
     private _removeListener4;
+    private _isGridSnapEnabled;
     /**
      * Bugfix: iFrames, and context unrelated elements block all events, and are unusable
      * https://github.com/xieziyu/angular2-draggable/issues/84
@@ -71,6 +73,8 @@ export declare class AngularDraggableDirective implements OnInit, OnDestroy, OnC
         'bottom': boolean;
         'left': boolean;
     };
+    /** Get current offset */
+    getCurrentOffset(): IPosition;
     private putBack();
     checkHandleTarget(target: EventTarget, element: Element): boolean;
     private _bindEvents();

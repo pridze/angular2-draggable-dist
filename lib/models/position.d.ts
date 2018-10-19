@@ -10,6 +10,7 @@ export declare class Position implements IPosition {
     static isIPosition(obj: any): obj is IPosition;
     static getCurrent(el: Element): Position;
     static copy(p: Position): Position;
+    readonly value: IPosition;
     add(p: IPosition): this;
     subtract(p: IPosition): this;
     reset(): this;
